@@ -19,10 +19,4 @@ class WebMoney implements PaymentMethod
         // TODO Some specific logic for WebMoney
         return (new TransactionRepository())->store($account->getId(), $amount);
     }
-
-    public function transfer(Account $sourceAccount, Account $destinationAccount, float $amount): bool
-    {
-        // TODO Some specific logic for WebMoney
-        return (new TransactionRepository())->transfer($sourceAccount->getId(), $destinationAccount->getId(), $amount);
-    }
 }

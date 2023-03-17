@@ -5,17 +5,11 @@ namespace App\Services;
 use App\Entities\Account;
 use App\PaymentMethods\PaymentMethod;
 use App\Repositories\AccountRepository;
+use App\Repositories\TransactionRepository;
 
 class OperationService
 {
     // Notice: all validations are in controllers (Need to implement if needed)
-
-    protected AccountRepository $accountRepository;
-
-    public function __construct()
-    {
-        $this->accountRepository = new AccountRepository();
-    }
 
     public function deposit(PaymentMethod $paymentMethod, Account $account, float $amount): bool
     {
@@ -36,12 +30,12 @@ class OperationService
     }
 
     public function transfer(
-        PaymentMethod $paymentMethod,
         Account $sourceAccount,
         Account $destinationAccount,
         float $amount
     ): bool {
-        $result = $paymentMethod->transfer($sourceAccount, $destinationAccount, $amount);
+        $transactionRepository = new TransactionRepository();
+        $result = $transactionRepository->transfer($sourceAccount->getId(), $destinationAccount->getId(), $amount);
 
         // TODO other stuff like sending notification or trigger an event.
 
