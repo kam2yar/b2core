@@ -19,12 +19,20 @@ class OperationService
 
     public function deposit(PaymentMethod $paymentMethod, Account $account, float $amount): bool
     {
-        return $paymentMethod->deposit($account, $amount);
+        $result = $paymentMethod->deposit($account, $amount);
+
+        // TODO other stuff like sending notification or trigger an event.
+
+        return $result;
     }
 
     public function withdrawal(PaymentMethod $paymentMethod, Account $account, float $amount): bool
     {
-        return $paymentMethod->withdrawal($account, $amount);
+        $result = $paymentMethod->withdrawal($account, $amount);
+
+        // TODO other stuff like sending notification or trigger an event.
+
+        return $result;
     }
 
     public function transfer(
@@ -33,6 +41,10 @@ class OperationService
         Account $destinationAccount,
         float $amount
     ): bool {
-        return $paymentMethod->transfer($sourceAccount, $destinationAccount, $amount);
+        $result = $paymentMethod->transfer($sourceAccount, $destinationAccount, $amount);
+
+        // TODO other stuff like sending notification or trigger an event.
+
+        return $result;
     }
 }
