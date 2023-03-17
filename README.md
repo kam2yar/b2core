@@ -18,4 +18,6 @@ Composer
 
 ## Data pattern
 
-I used "strategy pattern" because we can have multiple payment systems and we need to implement specific logic for each one.
+I used "strategy pattern" because we can have multiple payment systems and, we need to implement specific logic for each one.
+
+We can have a factory for creating payment method class from string and use it in our controller.
